@@ -1,24 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
-	private Rigidbody rb;
+    private Rigidbody rb;
 
-	void Start() {
-		rb = GetComponent<Rigidbody>();
-	}
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
-	void FixedUpdate() {
-		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Vertical");
-		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-		rb.AddForce(movement);
-	}
+    void FixedUpdate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.CompareTag("Collectable")) {
-			other.gameObject.SetActive(false);
-		}
-	}
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        rb.AddForce(movement);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Collectable"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
